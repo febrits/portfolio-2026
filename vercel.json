@@ -1,0 +1,24 @@
+{
+  "projects": [
+    {
+      "name": "reviewhub",
+      "root": "./reviewhub"
+    },
+    {
+      "name": "eventssync",
+      "root": "./eventssync"
+    },
+    {
+      "name": "snippetvault",
+      "root": "./snippetvault"
+    },
+    {
+      "name": "pollforge",
+      "root": "./pollforge"
+    },
+    {
+      "name": "budgetbuddy",
+      "root": "./budgetbuddy"
+    }
+  ]
+}
