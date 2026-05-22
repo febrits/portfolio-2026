@@ -94,26 +94,30 @@ export default function Home() {
         <div style={{ margin: '2rem 0' }}>
           <h2>Live Poll Results</h2>
           <p><strong>{question}</strong></p>
-          {options.map((opt, index) => (
-            <div key={index} style={{ marginBottom: '0.5rem' }}>
-              <span style={{ display: 'inline-block', width: '150px' }}>{opt || `Option ${index + 1}`}:</span>
-              <div style={{ backgroundColor: '#e0e0e0', borderRadius: '4px', overflow: 'hidden', width: '200px' }}>
-                <div 
-                  style={{ 
-                    backgroundColor: '#0070f3', 
-                    color: 'white', 
-                    textAlign: 'center', 
-                    width: `${results[index] > 0 ? Math.min((results[index] / Math.max(...results) * 100, 100) : 0)}%`, 
-                    height: '24px', 
-                    lineHeight: '24px', 
-                    fontSize: '0.875rem' 
-                  }}
-                >
-                  {results[index]} votes
+          {options.map((opt, index) => {
+            const maxResults = Math.max(...results);
+            const width = maxResults > 0 ? (results[index] / maxResults) * 100 : 0;
+            return (
+              <div key={index} style={{ marginBottom: '0.5rem' }}>
+                <span style={{ display: 'inline-block', width: '150px' }}>{opt || `Option ${index + 1}`}:</span>
+                <div style={{ backgroundColor: '#e0e0e0', borderRadius: '4px', overflow: 'hidden', width: '200px' }}>
+                  <div 
+                    style={{ 
+                      backgroundColor: '#0070f3', 
+                      color: 'white', 
+                      textAlign: 'center', 
+                      width: `${width}%`, 
+                      height: '24px', 
+                      lineHeight: '24px', 
+                      fontSize: '0.875rem' 
+                    }}
+                  >
+                    {results[index]} votes
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
           <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem' }}>
             {options.map((opt, index) => (
               <button
